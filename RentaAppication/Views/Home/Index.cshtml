@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Client>
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+@section Navigation {
+    @{
+        await Html.RenderPartialAsync("Navigation");
+    }
+}
+
+<h1 class="display-4">@Localizer["Title"]</h1>
+
+<div class="float-left card border-0 shadow" style="padding: 15px; background-color: lightcoral">
+    <form method="get" asp-action="Index">
+        <span>@Localizer["Filters"]</span><br />
+
+        <input type="radio" name="filter" value="date" checked="checked"/>
+        <span>@Localizer["SortByDate"]</span><br />
+
+        <input type="radio" name="filter" value="populariry"/>
+        <span>@Localizer["SortByPopularity"]</span><br />
+
+        <input type="radio" name="filter" value="price"/>
+        <span>@Localizer["SortByPrice"]</span><br /><br />
+
+        <button class="btn btn-info">@Localizer["ApplyFilters"]</button>
+    </form>
+</div>
+
+<div>
+    <ul class="ulList">
+        @foreach(var client in Model)
+        {
+            @foreach(var good in client.Goods)
+            {
+                <li class="liList">
+                    <div class="card border-0 shadow" style="width: 250px;">
+                        <img class="card-img-top" width=200 height=200 src=@good.Link alt="Photo"/>
+                        <div class="card-body" style="background-color: lightblue">
+                            <p class="card-title center describe">@Localizer["Rieltor"]: @client.Firstname @client.Lastname</p>
+                            @await Html.PartialAsync("ShowGood", good)
+                        </div>
+                    </div>
+                </li>
+            }
+        }
+    </ul>
+</div>

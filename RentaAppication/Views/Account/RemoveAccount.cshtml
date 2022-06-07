@@ -1,0 +1,35 @@
+﻿@model Client
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+@section Navigation {
+    @{
+        await Html.RenderPartialAsync("Navigation");
+    }
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<div class="float-left">
+    <div class="card border-0 shadow" style="background-color: lightcoral">
+        @await Html.PartialAsync("AccountInfo")
+    </div>
+</div>
+
+<div class="float-left" style="padding-left: 10px;">
+    <div class="card border-0 shadow" style="background-color: lightcoral;">
+        <h6 class="card-header">@Localizer["Question"]</h6>
+        <div class="float-left p-3">
+            <form method="post" asp-action="Remove">
+                <button class="btn btn-primary" name="clientId" value=@Model.Id>@Localizer["Yes"]</button>
+            </form>
+        </div>
+        <div class="float-left p-3">
+            <form method="get" asp-action="ShowAccount">
+                <button class="btn btn-primary">@Localizer["No"]</button>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = @Localizer["Title"];
+}
+
+@section Navigation {
+    @{
+        await Html.RenderPartialAsync("Navigation");
+    }
+}
+
+<h1 class="display-4">@Localizer["Title"]</h1>

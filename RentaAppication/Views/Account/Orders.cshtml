@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+@section Navigation {
+    @{
+        await Html.RenderPartialAsync("Navigation");
+    }
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<div>
+    <ul class="ulList">
+        @foreach(var order in Model)
+        {
+            <li class="liList">
+                 <div class="card border-0 shadow" style="width: 250px;">
+                    <img class="card-img-top" width=200 height=200 src=@order.Good.Link alt="Photo"/>
+                    <div class="card-body" style="background-color: lightblue">
+                        <p class="card-title center describe">@Localizer["Date"]: @order.Date.ToShortDateString()</p>
+                        <p class="card-title center describe">@Localizer["Rieltor"]: @order.Client.Firstname @order.Client.Lastname</p>
+                        @await Html.PartialAsync("ShowGood", order.Good)
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <h3>@ViewBag.Message</h3>
+}
+

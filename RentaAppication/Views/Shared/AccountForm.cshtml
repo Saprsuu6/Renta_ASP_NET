@@ -1,0 +1,28 @@
+﻿@model Client
+
+<div class="form-group">
+    <input class="input-group-text border-0 shadow" type="text" asp-for="@Model.Firstname" placeholder="@Localizer["Firstname"]"/>
+    <span asp-validation-for="@Model.Firstname"></span><br />
+</div>
+
+<div class="form-group">
+    <input class="input-group-text border-0 shadow" type="text" asp-for="@Model.Lastname" placeholder="@Localizer["Lastname"]"/>
+    <span asp-validation-for="@Model.Lastname"></span><br />
+</div>
+
+<div class="form-group">
+    <input class="input-group-text border-0 shadow" type="text" asp-for="@Model.Phone" placeholder="+38(XXXXXXXXX)"/>
+    <span asp-validation-for="@Model.Phone"></span><br />
+</div>
+
+<div class="form-group">
+    <input class="input-group-text border-0 shadow" type="password" asp-for="@Model.Password" placeholder="@Localizer["Password"]"/>
+    <span asp-validation-for="@Model.Password"></span><br />
+</div>
+
+<div class="form-group">
+    <input class="input-group-text border-0 shadow" type="email" asp-for="@Model.Email" placeholder="@Localizer["Email"]"/>
+    <span asp-validation-for="@Model.Email"></span><br />
+</div>
+
+<input type="hidden" asp-for="@Model.Id" />

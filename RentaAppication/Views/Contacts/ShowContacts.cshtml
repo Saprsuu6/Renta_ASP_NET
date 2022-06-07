@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Contact> 
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+@section Navigation {
+    @{
+        await Html.RenderPartialAsync("Navigation");
+    }
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<ul class="ulList">
+    @foreach (var item in Model)
+    {
+        <li class="liList" >
+            <div class="card border-0 shadow">
+                <dl class="dl-horizontal" style="margin: 10px">
+                    <dt class="card-text">@Localizer["Email"]</dt>
+                    <dd class="card-text">@item.Email</dd>
+                
+                    <dt class="card-text">@Localizer["Phones"]</dt>
+                    @foreach(Phone phone in item.Phones)
+                    {
+                        <dd class="card-text">@phone.Number</dd>
+                    }
+                
+                    <dt class="card-text">@Localizer["Location"]</dt>
+                    <dd class="card-text">@item.CountryTownStreet</dd>
+                </dl> 
+            </div>
+        </li>
+    }
+</ul>
+

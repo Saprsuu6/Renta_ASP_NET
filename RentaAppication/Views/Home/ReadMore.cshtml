@@ -1,0 +1,13 @@
+﻿@model Good
+@{
+    ViewData["Title"] = @Model.Apartment.Type;
+}
+
+@section Navigation {
+    @{
+        await Html.RenderPartialAsync("Navigation");
+    }
+}
+
+@await Html.PartialAsync("GoodInfo")
+

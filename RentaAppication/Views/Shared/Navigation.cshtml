@@ -1,0 +1,25 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav">
+            <li>
+                <div class="nav-link">@await Html.PartialAsync("SelectLanguage")</div>
+            </li>
+            <a class="nav-link" asp-area="" asp-controller="Contacts" asp-action="ShowContacts">@Localizer["Contacts"]</a>
+            @if(ViewBag.Session == null)
+            {
+                <a class="nav-link" asp-area="" asp-controller="AutoReg" asp-action="AutorisationView">@Localizer["Autorisation"]</a>
+                <a class="nav-link" asp-area="" asp-controller="AutoReg" asp-action="RegistrationView">@Localizer["Registration"]</a>
+            }
+            @if(ViewBag.Session != null)
+            {
+                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="ShowAccount">@Localizer["Account"]</a>
+                <a class="nav-link" asp-area="" asp-controller="AutoReg" asp-action="LogOut">@Localizer["LogOut"]</a>
+            }
+        </ul>
+    </div>
+</nav>

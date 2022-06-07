@@ -1,0 +1,16 @@
+﻿@model Good
+
+<p class="card-text center describe">@Localizer["DateOfAdd"]: @Model.DateOfAdd.ToShortDateString()</p>
+<p class="card-text center describe">@Localizer["DateOfUpdate"]: @Model.DateOfUpdate.ToShortDateString()</p>
+<p class="card-text center describe">@Localizer["Describe"]: @Model.Describe</p>
+<p class="card-text center describe">@Localizer["Watchings"]: @Model.Watchings</p>
+<p class="card-text center describe">@Localizer["Price"]: @Model.Price</p>
+<p class="card-text center describe">@Localizer["Status"]: @Model.Status</p>
+<p class="card-text center describe">...</p>
+
+<div class="center">
+    <form method="get" asp-controller="Home" asp-action="ReadMore">
+        <button class="btn btn-primary" name="goodId" value=@Model.Id>@Localizer["ReadMore"]</button>
+    </form>
+</div>
+

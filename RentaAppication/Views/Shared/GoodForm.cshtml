@@ -1,0 +1,115 @@
+﻿@model Good
+
+<div class="float-left p-3">
+    <h3>@Localizer["General"]</h3>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="url" asp-for="@Model.Link" placeholder="@Localizer["Image"]"/>
+        <span asp-validation-for="@Model.Link"></span><br />
+    </div>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="text" asp-for="@Model.Describe" placeholder="@Localizer["Describe"]"/>
+        <span asp-validation-for="@Model.Describe"></span><br />
+    </div>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="text" asp-for="@Model.Price" placeholder="@Localizer["Price"]"/>
+        <span asp-validation-for="@Model.Price"></span><br />
+    </div>
+
+    <div class="form-group">
+        <span>@Localizer["Status"]</span><br />
+
+        <input type="radio" asp-for="@Model.Status" value="Sale"/>
+        <span>@Localizer["Sale"]</span><br />
+
+        <input type="radio" asp-for="@Model.Status" value="Not sale" checked="checked"/>
+        <span>@Localizer["NotSale"]</span>
+    </div>
+</div>
+
+<div class="float-left p-3">
+    <h3>@Localizer["Apartment"]</h3>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="text" asp-for="@Model.Apartment.Town" placeholder="@Localizer["Town"].Value"/>
+        <span asp-validation-for="@Model.Apartment.Town"></span><br />
+    </div>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="text" asp-for="@Model.Apartment.Street" placeholder="@Localizer["Street"].Value"/>
+        <span asp-validation-for="@Model.Apartment.Street"></span><br />
+    </div>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="number" asp-for="@Model.Apartment.Floors" placeholder="@Localizer["Floors"].Value"/>
+        <span asp-validation-for="@Model.Apartment.Floors"></span><br />
+    </div>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="number" asp-for="@Model.Apartment.Rooms" placeholder="@Localizer["Rooms"].Value"/>
+        <span asp-validation-for="@Model.Apartment.Rooms"></span><br />
+    </div>
+
+    <div class="form-group">
+        <span>@Localizer["Type"]</span><br />
+
+        <input type="radio" asp-for="@Model.Apartment.Type" value="Terraced" checked="checked"/>
+        <span>@Localizer["Terraced"]</span><br />
+
+        <input type="radio" asp-for="@Model.Apartment.Type" value="Cottage"/>
+        <span>@Localizer["Cotage"]</span><br />
+
+        <input type="radio" asp-for="@Model.Apartment.Type" value="Block"/>
+        <span>@Localizer["Block"]</span><br />
+    </div>
+
+    <div class="form-group">
+        <span>@Localizer["Layout"]</span><br />
+
+        <input type="radio" asp-for="@Model.Apartment.Layout" value="One floor" checked="checked"/>
+        <span>@Localizer["OneFloor"]</span><br />
+
+        <input type="radio" asp-for="@Model.Apartment.Layout" value="Two floor"/>
+        <span>@Localizer["TwoFloor"]</span><br />
+
+        <input type="radio" asp-for="@Model.Apartment.Layout" value="Else"/>
+        <span>@Localizer["Else"]</span><br />
+    </div>
+
+    <div class="form-group">
+        <span>@Localizer["Condition"]</span><br />
+
+        <input type="radio" asp-for="@Model.Apartment.Condition" value="New" checked="checked"/>
+        <span>@Localizer["New"]</span><br />
+
+        <input type="radio" asp-for="@Model.Apartment.Condition" value="Good"/>
+        <span>@Localizer["Good"]</span><br />
+
+        <input type="radio" asp-for="@Model.Apartment.Condition" value="Bad"/>
+        <span>@Localizer["Bad"]</span><br />
+    </div>
+</div>
+
+<div class="float-left p-3">
+    <h3>@Localizer["Area"]</h3>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="number" asp-for="@Model.Apartment.Length" placeholder="@Localizer["Length"]"/>
+        <span asp-validation-for="@Model.Apartment.Length"></span><br />
+    </div>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="number" asp-for="@Model.Apartment.Width" placeholder="@Localizer["Width"]"/>
+        <span asp-validation-for="@Model.Apartment.Width"></span><br />
+    </div>
+
+    <div class="form-group">
+        <input class="input-group-text border-0 shadow" type="number" asp-for="@Model.Apartment.Height" placeholder="@Localizer["Height"]"/>
+        <span asp-validation-for="@Model.Apartment.Height"></span><br />
+    </div>
+</div>
+
+<input type="hidden" asp-for="@Model.Id" />
+

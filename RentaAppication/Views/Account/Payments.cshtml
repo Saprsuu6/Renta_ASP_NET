@@ -1,0 +1,59 @@
+﻿@model KeyValuePair<Client, Payment>
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+@section Navigation {
+    @{
+        await Html.RenderPartialAsync("Navigation");
+    }
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<div>
+    <ul class="ulList">
+        @foreach (var item in Model.Key.Payments)
+        { 
+            <li class="liList">  
+                <div class="card border-0 shadow">
+                    <dl class="dl-horizontal card-body">
+                       <dt class="card-text">@Localizer["Provider"]</dt>
+                       <dd class="card-text">@item.Provider</dd>
+                    
+                       <dt class="card-text">@Localizer["Number"]</dt>
+                       <dd class="card-text">@item.Number</dd>
+                    </dl> 
+                </div>  
+            </li>
+        }
+    </ul>
+</div>
+
+<div>
+    <form method="post" asp-action="AddPayment">
+        <div class="form-group">
+            <input class="input-group-text border-0 shadow" type="text" asp-for="@Model.Value.Provider" placeholder="@Localizer["Provider"]"/>
+            <span asp-validation-for="@Model.Value.Provider"></span><br />
+        </div>
+
+        <div class="form-group">
+            <input class="input-group-text border-0 shadow" type="text" asp-for="@Model.Value.Number" placeholder="@Localizer["Number"]"/>
+            <span asp-validation-for="@Model.Value.Number"></span><br />
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="@Localizer["Add"]" />
+
+        <input type="hidden" asp-for="@Model.Key.Id" value="@Model.Key.Id" />
+    </form>
+</div>  
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-danger">@ViewBag.Message</div>
+}
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

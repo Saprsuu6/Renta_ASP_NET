@@ -1,0 +1,30 @@
+﻿@model Good
+@{
+    ViewData["Title"] = @Model.Apartment.Type;
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<p class="border-0 rounded shadow describe" style="background-color: lightpink">
+    <img class="border-0 rounded shadow" width=500 height=400 src=@Model.Link alt="Photo" align="left" 
+    vspace="10" hspace="10">
+    @Localizer["Town"]: @Model.Apartment.Town<br/>
+    @Localizer["Street"]: @Model.Apartment.Street<br/>
+    @Localizer["Type"]: @Model.Apartment.Type<br/>
+    @Localizer["Floors"]: @Model.Apartment.Floors<br/>
+    @Localizer["Rooms"]: @Model.Apartment.Rooms<br/>
+    @Localizer["Layout"]: @Model.Apartment.Layout<br/>
+    @Localizer["Condition"]: @Model.Apartment.Condition<br/>
+    @Localizer["Area"]: @Model.Apartment.Length / @Model.Apartment.Width / @Model.Apartment.Height<br/>
+</p>
+
+@if (ViewBag.Session != null && ViewBag.Session != "admin" && Model.Status != "Sale")
+{
+    <div class="center">
+        <form method="get" asp-action="Buy">
+            <button class="btn btn-primary" name="pair">@Localizer["Buy"]</button>
+
+            <input type="hidden" asp-for="Id" value="@Model.Id"/>
+        </form>
+    </div>
+}

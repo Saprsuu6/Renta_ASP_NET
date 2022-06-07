@@ -1,0 +1,33 @@
+﻿@model Good
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+@section Navigation {
+    @{
+        await Html.RenderPartialAsync("Navigation");
+    }
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<div>
+    <form method="post">
+        @await Html.PartialAsync("GoodForm")
+    
+        <div class="float-left p-3">
+            <input class="btn btn-success" type="submit" value="@Localizer["Create"]" asp-action="Create" /><br /><br />
+        </div>
+    </form>
+</div>
+
+@if(ViewBag.Message != null)
+{
+    <div class="alert alert-danger">@ViewBag.Message</div>
+}
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+

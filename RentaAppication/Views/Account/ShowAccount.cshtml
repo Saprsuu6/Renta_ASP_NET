@@ -1,0 +1,78 @@
+﻿@model Client
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+@section Navigation {
+    @{
+        await Html.RenderPartialAsync("Navigation");
+    }
+}
+
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<div class="float-left card border-0 shadow" style="padding: 15px; background-color: lightcoral">
+    @await Html.PartialAsync("AccountInfo")
+
+    <ul class="ulList-normal">
+        <li style="margin-bottom: 10px">
+            <form method="get" asp-action="Payments">
+                <button class="btn btn-info">@Localizer["Payments"]</button>
+            </form> 
+        </li>
+
+        <li style="margin-bottom: 10px">
+            <form method="get" asp-action="Orders">
+                <button type="submit" class="btn btn-info" name="clientId" value=@Model.Id>@Localizer["Orders"]</button>
+            </form> 
+        </li>
+
+        <li style="margin-bottom: 10px">
+            <form method="get" asp-controller="Good" asp-action="CreateGood">
+                <button class="btn btn-info">@Localizer["AddGood"]</button>
+            </form> 
+        </li>
+
+        <li style="margin-bottom: 10px">
+            <form method="get" asp-action="UpdateAccount">
+                <button class="btn btn-info">@Localizer["UpdateAccount"]</button>
+            </form> 
+        </li>
+
+        <li>
+            <form method="get" asp-action="RemoveAccount">
+                 <button type="submit" class="btn btn-info">@Localizer["RemoveAccount"]</button>
+            </form> 
+        </li>
+    </ul>
+</div>
+
+<div>
+    <ul class="ulList">
+        @foreach(var good in Model.Goods)
+        {
+            <li class="liList">
+                <div class="card border-0 shadow" style="width: 250px;">
+                    <img class="card-img-top" width=200 height=200 src=@good.Link alt="Photo"/>
+                    <div class="card-body" style="background-color: lightblue">
+                        <p class="card-title center describe">@Localizer["Rieltor"]: @Model.Firstname @Model.Lastname</p>
+                        @await Html.PartialAsync("ShowGood", good)
+
+                        <br />
+
+                        <div class="center">
+                            <form method="get" asp-controller="Good" asp-action="UpdateGood">
+                                <button class="btn btn-primary" name="goodId" value="@good.Id">@Localizer["UpdateGood"]</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+    
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Message</div>
+    }
+</div>
